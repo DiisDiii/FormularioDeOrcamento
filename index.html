@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário de Orçamento</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #e0f7fa; /* Azul claro */
+            color: #333;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://img.freepik.com/fotos-premium/gato-fofo-em-terno-de-banqueiro-contando-dinheiro_982005-3055.jpg');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.5; /* Ajuste a opacidade conforme necessário */
+        }
+
+        .container {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 30px;
+            border-radius: 10px;
+            width: 400px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            position: relative; /* Para sobrepor ao fundo */
+            z-index: 1;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            color: #00796b; /* Verde escuro */
+        }
+
+        label {
+            margin-top: 10px;
+            display: block;
+            font-weight: bold;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #00796b; /* Verde escuro */
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 15px;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #004d40; /* Verde mais escuro */
+        }
+
+        .return-method {
+            margin: 15px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="background"></div>
+    <div class="container">
+        <h1>Solicitar Orçamento</h1>
+        <form id="budgetForm">
+            <label for="name">Nome:</label>
+            <input type="text" id="name" required>
+
+            <label for="phone">Telefone:</label>
+            <input type="tel" id="phone" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" required>
+
+            <label for="state">Estado:</label>
+            <select id="state" required>
+                <option value="">Selecione...</option>
+                <option value="SP">São Paulo</option>
+                <option value="RJ">Rio de Janeiro</option>
+                <option value="MG">Minas Gerais</option>
+                <option value="RS">Rio Grande do Sul</option>
+            </select>
+
+            <label for="product">Qual produto deseja orçar?</label>
+            <select id="product" required>
+                <option value="">Selecione...</option>
+                <option value="Produto A">Produto A</option>
+                <option value="Produto B">Produto B</option>
+                <option value="Produto C">Produto C</option>
+            </select>
+
+            <div class="return-method">
+                <label>Você prefere o retorno por:</label>
+                <div>
+                    <input type="radio" id="emailReturn" name="returnMethod" value="Email" required>
+                    <label for="emailReturn">Email</label>
+                </div>
+                <div>
+                    <input type="radio" id="phoneReturn" name="returnMethod" value="Telefone" required>
+                    <label for="phoneReturn">Telefone</label>
+                </div>
+            </div>
+
+            <label for="captcha">2 + 7 = ?</label>
+            <input type="number" id="captcha" required>
+
+            <label>
+                <input type="checkbox" id="consent" required> Eu concordo em receber notificações por e-mail e WhatsApp
+            </label>
+
+            <button type="submit">Solicitar Orçamento</button>
+        </form>
+    </div>
+    <script>
+        document.getElementById('budgetForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            const captchaValue = document.getElementById('captcha').value;
+            if (parseInt(captchaValue) !== 9) {
+                alert('Resposta do captcha incorreta. Tente novamente.');
+                return;
+            }
+
+            // Aqui você pode adicionar o código para enviar os dados ao servidor se necessário
+
+            alert('Orçamento solicitado com sucesso!');
+            this.reset();
+        });
+    </script>
+</body>
+</html>
