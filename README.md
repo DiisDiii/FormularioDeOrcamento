@@ -1,0 +1,1 @@
+Esse projeto, utilizei JS, HTML, CSS, para fazer um formulário baseado numa pessoa que estária solicitando um orçamento de algum produto, nisso compilei tudo dentro do arquivo HTML, pois achei mais fácil para compreender.
